@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Bloglist from "../components/Bloglist.jsx";
 import { getAllBlogs } from "../services/blogservices";
+import "../styling/Home.css";
 
 function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -19,12 +20,10 @@ function Home() {
       });
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  if (loading) return <div className="home-loading">Loading blogs...</div>;
+  if (error) return <div className="home-error">{error}</div>;
 
   return <Bloglist blogs={blogs} title="All Blogs" />;
 }
 
 export default Home;
-
-

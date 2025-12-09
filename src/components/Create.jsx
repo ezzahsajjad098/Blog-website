@@ -1,108 +1,52 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createBlog } from "../services/blogservices";
+import "../styling/Create.css";
 
 const Create = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [author, setAuthor] = useState("mario");
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-
-    createBlog({ title, body, author })
+    createBlog({ title, body })
       .then(() => {
+        alert("Blog created successfully!");
         navigate("/");
       })
-      .catch((err) => {
-        alert(err.message);
-      })
-      .finally(() => setLoading(false));
+      .catch((err) => alert("Error: " + err.message));
   };
 
   return (
-    <div
-      style={{
-        width: "450px",
-        margin: "20px auto",
-        padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0px 0px 10px rgba(0,0,0,0.1)"
-      }}
-    >
-      <h2
-        style={{
-          color: "#c42d5d",
-          textAlign: "center",
-          marginBottom: "20px",
-          fontSize: "24px",
-        }}
-      >
-        Create New Blog
-      </h2>
+    <div className="create-container">
+      <h2>Create New Blog</h2>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "15px" }}
-      >
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          placeholder="Enter Title"
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            borderRadius: "6px",
-            border: "1px solid #ccc",
-          }}
-        />
+      <form className="create" onSubmit={handleSubmit}>
+        
+        <div className="form-block">
+          <h3>Title</h3>
+          <input 
+            type="text"
+            placeholder="Enter blog title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required 
+          />
+        </div>
 
-        <textarea
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          required
-          placeholder="Enter Body"
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            height: "120px",
-            borderRadius: "6px",
-            border: "1px solid #ccc",
-          }}
-        />
+        <div className="form-block">
+          <h3>Body</h3>
+          <textarea 
+            placeholder="Write your blog here..."
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            required
+          />
+        </div>
 
-        <select
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            borderRadius: "6px",
-            border: "1px solid #ccc",
-          }}
-        >
-          <option value="mario">mario</option>
-          <option value="yungi">yungi</option>
-        </select>
-
-        <button
-          disabled={loading}
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            cursor: "pointer",
-            background: "#c42d5d",
-            color: "white",
-            border: "none",
-            borderRadius: "6px",
-            opacity: loading ? 0.7 : 1,
-          }}
-        >
-          {loading ? "Adding..." : "Add Blog"}
+        <button type="submit" className="submit-btn">
+          Create Blog
         </button>
       </form>
     </div>
@@ -110,9 +54,3 @@ const Create = () => {
 };
 
 export default Create;
-
-
-
-
-
-

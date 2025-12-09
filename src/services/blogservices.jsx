@@ -1,48 +1,27 @@
-const base_url = "http://localhost:8000/Blogs";
+import api from "./api";
 
 export const getAllBlogs = async () => {
-  return fetch(base_url).then((response) => {
-    if (!response.ok) throw new Error("Failed to fetch blogs");
-    return response.json();
-  });
+  const response = await api.get("/Blogs");
+  return response.data;
 };
 
 export const getBlogById = async (id) => {
-  return fetch(`${base_url}/${id}`).then((response) => {
-    if (!response.ok) throw new Error("Blog not found");
-    return response.json();
-  });
+  const response = await api.get(`/Blogs/${id}`);
+  return response.data;
 };
 
 export const createBlog = async (blog) => {
-  return fetch(base_url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(blog),
-  }).then((response) => {
-    if (!response.ok) throw new Error("Failed to create blog");
-    return response.json();
-  });
+  const response = await api.post("/Blogs", blog);
+  return response.data;
 };
 
-export const updateBlog = async (id, blog) => {
-  return fetch(`${base_url}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(blog),
-  }).then((response) => {
-    if (!response.ok) throw new Error("Failed to update blog");
-    return response.json();
-  });
+export const updateBlog = async (id, updatedBlog) => {
+  const response = await api.put(`/Blogs/${id}`, updatedBlog);
+  return response.data;
 };
 
 export const deleteBlog = async (id) => {
-  return fetch(`${base_url}/${id}`, {
-    method: "DELETE",
-  }).then((response) => {
-    if (!response.ok) throw new Error("Failed to delete blog");
-
-    // Some servers return no JSON for DELETE
-    return response.text().then((text) => (text ? JSON.parse(text) : {}));
-  });
+  const response = await api.delete(`/Blogs/${id}`);
+  return response.data;
 };
+

@@ -1,0 +1,50 @@
+/* BlogDetails.css */
+
+.blog-details {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 20px var(--shadow-light);
+  text-align: left;
+}
+
+.blog-details h2 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.blog-details p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  transition: all var(--transition-speed) ease;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.btn-update {
+  background-color: var(--accent-color);
+  color: #333;
+}
+
+.btn-update:hover {
+  background-color: #f1b85b;
+}

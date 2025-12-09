@@ -1,55 +1,70 @@
-
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #ffffff; 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:root {
+  --primary-color: #ff6f61; /* Coral for hover */
+  --bg-dark: #1a1a1a;       /* Dark navbar background */
+  --text-light: #ffffff;    /* Light text */
+  --primary-color: #ff6f61; /* Coral for hover */
+  --text-dark:  #f1356d;
 }
 
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 12px 40px;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
+.navbar-brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ff6f61; /* Coral brand color */
 }
-
 
 .nav-links {
+  list-style: none;
   display: flex;
-  gap: 12px;                  
-  background-color: #f3f3f3;    
-  padding: 8px 16px;            
-  border-radius: 12px;         
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* subtle shadow */
+  gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
-/* Individual link buttons */
-.nav-links a {
-  text-decoration: none;
-  color: #555; 
+.nav-links li a {
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: var(--text-light);
   font-weight: 500;
-  padding: 10px 20px;          /* button-like padding */
-  border-radius: 8px;          /* rounded corners for buttons */
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
+.nav-links li a:hover {
+  background-color: var(--primary-color); /* Coral hover */
+  color: var(--text-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(152, 63, 55, 0.3); 
+}
 
-.nav-links a:hover {
-  background-color: #43365a;   
-  color: white;
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 12px 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-links li a {
+    padding: 8px 12px;
+  }
 }
 

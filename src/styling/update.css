@@ -1,0 +1,54 @@
+/* Update.css - Update Blog Form */
+
+.update-form {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.update-form h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #2c7a2b; /* Green heading */
+  margin-bottom: 25px;
+}
+
+.update-form input,
+.update-form textarea {
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  width: 100%;
+  resize: vertical;
+  transition: border 0.2s ease;
+}
+
+.update-form input:focus,
+.update-form textarea:focus {
+  border-color: #27ae60; /* Green focus */
+  outline: none;
+}
+
+.update-form button {
+  padding: 14px;
+  background-color: #27ae60; /* Green button */
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.update-form button:hover {
+  background-color: #1e8449;
+  transform: translateY(-2px);
+}
